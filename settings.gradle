@@ -1,0 +1,4 @@
+rootProject.name='JZWiFiAir'
+include ':app'
+include ':andromeda'
+include ':airlib'
