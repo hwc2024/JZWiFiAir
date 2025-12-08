@@ -3,6 +3,8 @@ package com.jz.air;
 import org.qiyi.video.svg.IPCCallback;
 interface IWiFiMessenger {
 
+    boolean isExternalWiFi();
+
     int connect(in String ssid, in String psk, IPCCallback callback);
 
     int disConnectAll();
