@@ -29,6 +29,11 @@ public class WiFiMessengerService extends IWiFiMessenger.Stub {
 
 
     @Override
+    public boolean isExternalWiFi() throws RemoteException {
+        return false;
+    }
+
+    @Override
     public int connect(String ssid, String psk, org.qiyi.video.svg.IPCCallback callback) throws RemoteException {
         return 0;
     }
