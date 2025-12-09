@@ -55,6 +55,22 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
         return iBottomMessenger;
     }
 
+    public String getExternalWiFiName() {
+        IBinder iBottomMessenger = checkIsConnect();
+        if (iBottomMessenger == null) {
+            return null;
+        }
+        IWiFiMessenger buyApple = IWiFiMessenger.Stub.asInterface(iBottomMessenger);
+        if (null != buyApple) {
+            try {
+                return buyApple.getExternalWiFiName();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
     public boolean isExternalWiFi() {
         IBinder iBottomMessenger = checkIsConnect();
         if (iBottomMessenger == null) {

@@ -29,6 +29,11 @@ public class WiFiMessengerService extends IWiFiMessenger.Stub {
 
 
     @Override
+    public String getExternalWiFiName() throws RemoteException {
+        return "";
+    }
+
+    @Override
     public boolean isExternalWiFi() throws RemoteException {
         return false;
     }
