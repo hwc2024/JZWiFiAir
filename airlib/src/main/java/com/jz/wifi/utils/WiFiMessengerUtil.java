@@ -204,5 +204,37 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
         return false;
     }
 
+    public boolean getConnectMac(OnWiFiListener onWiFiListener) {
+        IBinder iBottomMessenger = checkIsConnect();
+        if (iBottomMessenger == null) {
+            return false;
+        }
+        IWiFiMessenger buyApple = IWiFiMessenger.Stub.asInterface(iBottomMessenger);
+        if (null != buyApple) {
+            try {
+                buyApple.getConnectMac(new BaseCallback() {
+
+                    @Override
+                    public void onSucceed(Bundle build) {
+                        if (onWiFiListener != null) {
+                            onWiFiListener.onConnectMac(build.getString("mac"));
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(String reason) {
+                        org.qiyi.video.svg.log.Logger.e("buyAppleOnNet failed,reason:" + reason);
+                        if (onWiFiListener != null) {
+                            onWiFiListener.onConnectMac("");
+                        }
+                    }
+                });
+                return true;
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
 
 }

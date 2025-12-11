@@ -15,4 +15,6 @@ interface IWiFiMessenger {
 
     int getConnectIp(IPCCallback callback);
 
+    int getConnectMac(IPCCallback callback);
+
 }

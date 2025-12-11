@@ -30,7 +30,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.miusou.andromeda.ServerActivity">
+        <activity android:name="com.miusou.andromeda.ClientActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,11 +40,11 @@
 
 
         <!-- 服务端时需要打开-->
-        <provider
-            android:name="org.qiyi.video.svg.dispatcher.DispatcherProvider"
-            android:authorities="com.jz.wifi.air.qiyi.svg.dispatcher"
-            android:enabled="true"
-            android:exported="true" />
+<!--        <provider-->
+<!--            android:name="org.qiyi.video.svg.dispatcher.DispatcherProvider"-->
+<!--            android:authorities="com.jz.wifi.air.qiyi.svg.dispatcher"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true" />-->
     </application>
 
 </manifest>

@@ -19,12 +19,15 @@ public class ClientActivity extends AppCompatActivity {
 
     public void onclick(View view) {
         if (view.getId() == R.id.btnSend) {
-            WiFiMessengerUtil.getInstance().getConnectSsid(new OnWiFiListener() {
-                @Override
-                public void onConnectSsid(String ssid) {
-                    Log.d("wifiaaa", "ssid: " + ssid);
-                }
-            });
+            String externalWiFiName = WiFiMessengerUtil.getInstance().getExternalWiFiName();
+            Log.d("wifiaaa", "externalWiFiName: " + externalWiFiName);
+//            WiFiMessengerUtil.getInstance().getConnectSsid(new OnWiFiListener() {
+//                @Override
+//                public void onConnectSsid(String ssid) {
+//                    Log.d("wifiaaa", "ssid: " + ssid);
+//                }
+//            });
+
         }
     }
 }

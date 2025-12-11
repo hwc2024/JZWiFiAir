@@ -14,4 +14,8 @@ public interface OnWiFiListener {
 
     }
 
+    default void onConnectMac(String mac) {
+
+    }
+
 }
