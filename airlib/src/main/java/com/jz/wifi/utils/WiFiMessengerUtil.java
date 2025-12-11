@@ -238,4 +238,21 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
         return false;
     }
 
+
+    public boolean isIdle() {
+        IBinder iBottomMessenger = checkIsConnect();
+        if (iBottomMessenger == null) {
+            return false;
+        }
+        IWiFiMessenger buyApple = IWiFiMessenger.Stub.asInterface(iBottomMessenger);
+        if (null != buyApple) {
+            try {
+                return buyApple.isIdle();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
 }
