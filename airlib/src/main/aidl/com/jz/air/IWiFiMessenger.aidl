@@ -17,6 +17,6 @@ interface IWiFiMessenger {
 
     int getConnectMac(IPCCallback callback);
 
-    boolean isIdle();
+    boolean isTask();
 
 }
