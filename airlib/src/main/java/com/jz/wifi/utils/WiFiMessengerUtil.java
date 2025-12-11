@@ -12,6 +12,7 @@ import com.jz.wifi.listener.OnWiFiListener;
 import org.qiyi.video.svg.Andromeda;
 import org.qiyi.video.svg.callback.BaseCallback;
 import org.qiyi.video.svg.config.DispatcherConstants;
+import org.qiyi.video.svg.log.Logger;
 import org.qiyi.video.svg.transfer.RemoteTransfer;
 import org.qiyi.video.svg.utils.BaseProcessUtil;
 
@@ -95,7 +96,7 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
         IWiFiMessenger buyApple = IWiFiMessenger.Stub.asInterface(iBottomMessenger);
         if (null != buyApple) {
             try {
-                buyApple.connect(ssid, psk, new BaseCallback() {
+                int isConnect = buyApple.connect(ssid, psk, new BaseCallback() {
 
                     @Override
                     public void onSucceed(Bundle build) {
@@ -106,13 +107,13 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
 
                     @Override
                     public void onFailed(String reason) {
-                        org.qiyi.video.svg.log.Logger.e("buyAppleOnNet failed,reason:" + reason);
+                        Logger.e("buyAppleOnNet failed,reason:" + reason);
                         if (onWiFiListener != null) {
                             onWiFiListener.onConnect(false, ssid, psk);
                         }
                     }
                 });
-                return true;
+                return isConnect == 1;
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -128,8 +129,8 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
         IWiFiMessenger buyApple = IWiFiMessenger.Stub.asInterface(iBottomMessenger);
         if (null != buyApple) {
             try {
-                buyApple.disConnectAll();
-                return true;
+                int disConnectAll = buyApple.disConnectAll();
+                return disConnectAll == 1;
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -146,7 +147,7 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
         Log.d(TAG, "buyApple: " + buyApple);
         if (null != buyApple) {
             try {
-                buyApple.getConnectSsid(new BaseCallback() {
+                int ssid = buyApple.getConnectSsid(new BaseCallback() {
 
                     @Override
                     public void onSucceed(Bundle build) {
@@ -157,13 +158,13 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
 
                     @Override
                     public void onFailed(String reason) {
-                        org.qiyi.video.svg.log.Logger.e("buyAppleOnNet failed,reason:" + reason);
+                        Logger.e("buyAppleOnNet failed,reason:" + reason);
                         if (onWiFiListener != null) {
                             onWiFiListener.onConnectSsid("");
                         }
                     }
                 });
-                return true;
+                return ssid == 1;
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -179,7 +180,7 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
         IWiFiMessenger buyApple = IWiFiMessenger.Stub.asInterface(iBottomMessenger);
         if (null != buyApple) {
             try {
-                buyApple.getConnectIp(new BaseCallback() {
+                int ip = buyApple.getConnectIp(new BaseCallback() {
 
                     @Override
                     public void onSucceed(Bundle build) {
@@ -190,13 +191,13 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
 
                     @Override
                     public void onFailed(String reason) {
-                        org.qiyi.video.svg.log.Logger.e("buyAppleOnNet failed,reason:" + reason);
+                        Logger.e("buyAppleOnNet failed,reason:" + reason);
                         if (onWiFiListener != null) {
                             onWiFiListener.onConnectIp("");
                         }
                     }
                 });
-                return true;
+                return ip == 1;
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -212,7 +213,7 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
         IWiFiMessenger buyApple = IWiFiMessenger.Stub.asInterface(iBottomMessenger);
         if (null != buyApple) {
             try {
-                buyApple.getConnectMac(new BaseCallback() {
+                int mac = buyApple.getConnectMac(new BaseCallback() {
 
                     @Override
                     public void onSucceed(Bundle build) {
@@ -223,13 +224,13 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
 
                     @Override
                     public void onFailed(String reason) {
-                        org.qiyi.video.svg.log.Logger.e("buyAppleOnNet failed,reason:" + reason);
+                        Logger.e("buyAppleOnNet failed,reason:" + reason);
                         if (onWiFiListener != null) {
                             onWiFiListener.onConnectMac("");
                         }
                     }
                 });
-                return true;
+                return mac == 1;
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
