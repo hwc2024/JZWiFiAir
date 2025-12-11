@@ -2,7 +2,7 @@ package com.jz.wifi.listener;
 
 public interface OnWiFiListener {
 
-    default void onConnect(boolean isConnect) {
+    default void onConnect(boolean isConnect, String ssid, String psk) {
 
     }
 

@@ -100,7 +100,7 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
                     @Override
                     public void onSucceed(Bundle build) {
                         if (onWiFiListener != null) {
-                            onWiFiListener.onConnect(build.getBoolean("isConnect"));
+                            onWiFiListener.onConnect(build.getBoolean("isConnect"), ssid, psk);
                         }
                     }
 
@@ -108,7 +108,7 @@ public class WiFiMessengerUtil extends BaseProcessUtil {
                     public void onFailed(String reason) {
                         org.qiyi.video.svg.log.Logger.e("buyAppleOnNet failed,reason:" + reason);
                         if (onWiFiListener != null) {
-                            onWiFiListener.onConnect(false);
+                            onWiFiListener.onConnect(false, ssid, psk);
                         }
                     }
                 });
