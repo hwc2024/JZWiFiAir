@@ -2,19 +2,48 @@ package com.jz.wifi.listener;
 
 public interface OnWiFiListener {
 
-    default void onConnect(boolean isConnect, String ssid, String psk) {
+    /**
+     * 连接结果回调
+     *
+     * @param isConnect
+     * @param ssid
+     * @param psk
+     */
+    default void onConnectComplete(boolean isConnect, String ssid, String psk) {
 
     }
 
-    default void onConnectSsid(String ssid) {
+    /**
+     * 连接中
+     */
+    default void onConnecting() {
 
     }
 
-    default void onConnectIp(String ip) {
+    /**
+     * 查询当前连接的SSID
+     *
+     * @param ssid
+     */
+    default void onCurrentSsid(String ssid) {
 
     }
 
-    default void onConnectMac(String mac) {
+    /**
+     * 查询当前连接的IP
+     *
+     * @param ip
+     */
+    default void onCurrentIp(String ip) {
+
+    }
+
+    /**
+     * 查询当前连接的mac地址
+     *
+     * @param mac
+     */
+    default void onCurrentMac(String mac) {
 
     }
 

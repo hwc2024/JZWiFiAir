@@ -21,12 +21,6 @@ public class ClientActivity extends AppCompatActivity {
         if (view.getId() == R.id.btnSend) {
             String externalWiFiName = WiFiMessengerUtil.getInstance().getExternalWiFiName();
             Log.d("wifiaaa", "externalWiFiName: " + externalWiFiName);
-//            WiFiMessengerUtil.getInstance().getConnectSsid(new OnWiFiListener() {
-//                @Override
-//                public void onConnectSsid(String ssid) {
-//                    Log.d("wifiaaa", "ssid: " + ssid);
-//                }
-//            });
 
         }
     }

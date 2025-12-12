@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.jz.air.IWiFiMessenger;
 
+import org.qiyi.video.svg.IPCCallback;
+
 public class WiFiMessengerService extends IWiFiMessenger.Stub {
 
     private static final String TAG = WiFiMessengerService.class.getSimpleName();
@@ -40,12 +42,12 @@ public class WiFiMessengerService extends IWiFiMessenger.Stub {
 
     @Override
     public int connect(String ssid, String psk, org.qiyi.video.svg.IPCCallback callback) throws RemoteException {
-        return 0;
+        return 1;
     }
 
     @Override
     public int disConnectAll() throws RemoteException {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -53,7 +55,17 @@ public class WiFiMessengerService extends IWiFiMessenger.Stub {
         Bundle bundle = new Bundle();
         bundle.putString("ip", "100");
         callback.onSuccess(bundle);
-        return 0;
+        return 1;
+    }
+
+    @Override
+    public int getConnectMac(IPCCallback callback) throws RemoteException {
+        return 1;
+    }
+
+    @Override
+    public boolean isTask() throws RemoteException {
+        return false;
     }
 
     @Override
@@ -62,6 +74,6 @@ public class WiFiMessengerService extends IWiFiMessenger.Stub {
         Bundle bundle = new Bundle();
         bundle.putString("ssid", "200");
         callback.onSuccess(bundle);
-        return 0;
+        return 1;
     }
 }
